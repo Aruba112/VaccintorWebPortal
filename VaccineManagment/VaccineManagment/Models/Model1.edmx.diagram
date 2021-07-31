@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="717f7c72f62946cd9d18ffec942b726d" Name="Diagram1" ZoomLevel="102">
+        <EntityTypeShape EntityType="VaccineSystemModel.Admin" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaccineSystemModel.ChildInfo" Width="1.5" PointX="6.25" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaccineSystemModel.Gender" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaccineSystemModel.Muhalla" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaccineSystemModel.Parent" Width="1.5" PointX="8.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaccineSystemModel.sysdiagram" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaccineSystemModel.UnionCouncil" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VaccineSystemModel.Vaccinator" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <AssociationConnector Association="VaccineSystemModel.FK_ChildInfo_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="VaccineSystemModel.FK_ChildInfo_Muhalla" ManuallyRouted="false" />
+        <AssociationConnector Association="VaccineSystemModel.FK_ChildInfo_UnionCouncil" ManuallyRouted="false" />
+        <AssociationConnector Association="VaccineSystemModel.FK_Vaccinator_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="VaccineSystemModel.FK_Muhalla_UnionCouncil" ManuallyRouted="false" />
+        <AssociationConnector Association="VaccineSystemModel.FK_Parent_Muhalla" ManuallyRouted="false" />
+        <AssociationConnector Association="VaccineSystemModel.FK_Parent_UnionCouncil" ManuallyRouted="false" />
+        <AssociationConnector Association="VaccineSystemModel.FK_Vaccinator_UnionCouncil" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="VaccineSystemModel.Complaint" Width="1.5" PointX="10.5" PointY="7.625" />
+        <AssociationConnector Association="VaccineSystemModel.FK_Complaints_Parent" />
+        <EntityTypeShape EntityType="VaccineSystemModel.Schedual" Width="1.5" PointX="7.5" PointY="3.125" />
+        <AssociationConnector Association="VaccineSystemModel.FK_Schedual_ChildInfo" />
+        <AssociationConnector Association="VaccineSystemModel.FK_Schedual_Vaccinator" />
+        <EntityTypeShape EntityType="VaccineSystemModel.tblPolio" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="VaccineSystemModel.VaccinatorTask" Width="1.5" PointX="10.375" PointY="3.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

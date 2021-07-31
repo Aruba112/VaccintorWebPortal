@@ -1,0 +1,284 @@
+﻿@{ 
+  //  HttpCookie cookie = HttpContext.Current.Request.Cookies["Admincookie"];
+    string Name = "";
+    int Id = 0;
+    if(Convert.ToInt32(Session["ID"]) > 0)
+    {
+        Id = Convert.ToInt32(Session["ID"]);
+        Name = Session["Name"].ToString();
+    }
+    else
+    {
+        Response.Redirect("/Home/Login");
+    }
+}
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="admin-themes-lab">
+    <meta name="author" content="themes-lab">
+    <link rel="shortcut icon" href="~/global/images/favicon.png" type="image/png">
+    <title> Admin </title>
+    <link href="~/global/css/style.css" rel="stylesheet">
+    <link href="~/global/css/theme.css" rel="stylesheet">
+    <link href="~/global/css/ui.css" rel="stylesheet">
+    <link href="~/admin/layout1/css/layout.css" rel="stylesheet">
+    
+    @*<script src="~/global/plugins/modernizr/modernizr-2.6.2-respond-1.1.0.min.js"></script>*@
+</head>
+<body>
+    <section>
+        <!-- BEGIN SIDEBAR -->
+        <div class="sidebar">
+            <style>
+                .logopanel {
+                    display:none !important;
+                }
+            </style>
+            <div class="logopanel">
+                <h1>
+                    <a href="/"></a>
+                </h1>
+            </div>
+            <div class="sidebar-inner">
+                <div class="sidebar-top">
+                    @*<form action="search-result.html" method="post" class="searchform" id="search-results">
+                            <input type="text" class="form-control" name="keyword" placeholder="Search...">
+                        </form>*@
+                    <div class="userlogged clearfix">
+                        <i class="icon icons-faces-users-01"></i>
+                        <div class="user-details">
+                            <h4>@Name</h4>
+                            <div class="dropdown user-login">
+                                <button class="btn btn-xs dropdown-toggle btn-rounded" type="button" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" data-delay="300">
+                                    <i class="online"></i><span>Available</span><i class="fa fa-angle-down"></i>
+                                </button>
+                                @*<ul class="dropdown-menu">
+                                        <li><a href="#"><i class="busy"></i><span>Busy</span></a></li>
+                                        <li><a href="#"><i class="turquoise"></i><span>Invisible</span></a></li>
+                                        <li><a href="#"><i class="away"></i><span>Away</span></a></li>
+                                    </ul>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-title">
+                    Navigation
+                    <div class="pull-right menu-settings">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" data-delay="300">
+                            <i class="icon-settings"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" id="reorder-menu" class="reorder-menu">Reorder menu</a></li>
+                            <li><a href="#" id="remove-menu" class="remove-menu">Remove elements</a></li>
+                            <li><a href="#" id="hide-top-sidebar" class="hide-top-sidebar">Hide user &amp; search</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <ul class="nav nav-sidebar">
+                    <li><a href="/Home/Index"><i class="icon-home"></i><span>Dashboard</span></a></li>
+                    <li class="nav-parent">
+                        <a href="#"><i class="icon-puzzle"></i><span>Area</span> <span class="fa arrow"></span></a>
+                        <ul class="children collapse">
+                            <li><a href="/Area/Index">Manage Union Council</a></li>
+                            <li><a href="/Area/AddOrEdit"> Add UC</a></li>
+                            <li><a href="/Area/ManageMuhalla">Manage Muhalla</a></li>
+                            <li><a href="/Area/AddOrEditMuhalla"> Add Muhalla</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-parent">
+                        <a href="#"><i class="icon-bulb"></i><span>Manage Childs</span> <span class="fa arrow"></span></a>
+                        <ul class="children collapse">
+                            <li><a href="/Child/ManageChild"> Manade Childs</a></li>
+                            <li><a href="/Child/AddOrEdit"> Add Child</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-parent">
+                        <a href=""><i class="icon-screen-desktop"></i><span>Manage Parents</span> <span class="fa arrow"></span></a>
+                        <ul class="children collapse">
+                            <li><a href="/Parent/ManageParent"> Manage Parents</a></li>
+
+
+                        </ul>
+                    </li>
+                    <li class="nav-parent">
+                        <a href=""><i class="icon-layers"></i><span>Vaccinator</span><span class="fa arrow"></span></a>
+                        <ul class="children collapse">
+                            <li><a href="/Vaccin/ManageVaccinator">Manage Vaccinator</a></li>
+                            <li><a href="/Vaccin/AddOrEdit"> Add Vaccinator</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-parent nav-active">
+                        <a href=""><i class="icon-note"></i><span>Admin </span><span class="fa arrow"></span></a>
+                        <ul class="children collaps">
+                            <li><a href="/Admin/ManageAdmin"> Manage Admin</a></li>
+                            <li><a href="/Admin/AddOrEdit"> Add Admin</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-parent nav-active">
+                        <a href=""><i class="icon-note"></i><span>Complaints </span><span class="fa arrow"></span></a>
+                        <ul class="children collaps">
+                            <li><a href="/Complaint/ManageComplaint"> View Complaints</a></li>
+
+
+                        </ul>
+                    </li>
+                    <li class="nav-parent">
+                        <a href="#"><i class="icon-bulb"></i><span>Reports</span> <span class="fa arrow"></span></a>
+                        <ul class="children collapse">
+                            <li><a href="/Child/SchedualView"> View Childs Reports</a></li>
+                            <li><a href="/Complaint/ManageReport"> Vaccinator Progress Report</a></li>
+                        </ul>
+                    </li>
+                   
+                </ul>
+                <!-- SIDEBAR WIDGET FOLDERS -->
+                @*<div class="sidebar-widgets">
+                        <p class="menu-title widget-title">Folders <span class="pull-right"><a href="#" class="new-folder"> <i class="icon-plus"></i></a></span></p>
+                        <ul class="folders">
+                            <li>
+                                <a href="#"><i class="icon-doc c-primary"></i>My documents</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="icon-picture"></i>My images</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="icon-lock"></i>Secure data</a>
+                            </li>
+                            <li class="add-folder">
+                                <input type="text" placeholder="Folder's name..." class="form-control input-sm">
+                            </li>
+                        </ul>
+                    </div>*@
+                <div class="sidebar-footer clearfix">
+                    @*<a class="pull-left footer-settings" href="#" data-rel="tooltip" data-placement="top" data-original-title="Settings">
+                            <i class="icon-settings"></i>
+                        </a>*@
+                    <a class="pull-left toggle_fullscreen" href="#" data-rel="tooltip" data-placement="top" data-original-title="Fullscreen">
+                        <i class="icon-size-fullscreen"></i>
+                    </a>
+                    @*<a class="pull-left" href="#" data-rel="tooltip" data-placement="top" data-original-title="Lockscreen">
+                            <i class="icon-lock"></i>
+                        </a>*@
+                    <a class="pull-left btn-effect" href="/Home/Logout" data-modal="modal-1" data-rel="tooltip" data-placement="top" data-original-title="Logout">
+                        <i class="icon-power"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- END SIDEBAR -->
+        <div class="main-content">
+            <!-- BEGIN TOPBAR -->
+            <div class="topbar">
+                <div class="header-left">
+                    <div class="topnav">
+                        <a class="menutoggle" href="#" data-toggle="sidebar-collapsed"><span class="menu__handle"><span>Menu</span></span></a>
+                        @*<ul class="nav nav-icons">
+                                <li><a href="#" class="toggle-sidebar-top"><span class="icon-user-following"></span></a></li>
+                                <li><a href="mailbox.html"><span class="octicon octicon-mail-read"></span></a></li>
+                                <li><a href="#"><span class="octicon octicon-flame"></span></a></li>
+                                <li><a href="builder-page.html"><span class="octicon octicon-rocket"></span></a></li>
+                            </ul>*@
+                    </div>
+                </div>
+                <div class="header-right">
+                    <ul class="header-menu nav navbar-nav">
+                        <!-- BEGIN USER DROPDOWN -->
+                        <!-- END MESSAGES DROPDOWN -->
+                        <!-- BEGIN USER DROPDOWN -->
+                        <li class="dropdown" id="user-header">
+                            <a href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                <img src="~/global/images/avatars/user1.png" alt="user image">
+                                <span class="username">Hi, @Name</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                @*<li>
+                                        <a href="#"><i class="icon-user"></i><span>My Profile</span></a>
+                                    </li>*@
+
+                                <li>
+                                    <a href="/Home/Logout"><i class="icon-logout"></i><span>Logout</span></a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- END USER DROPDOWN -->
+                        <!-- CHAT BAR ICON -->
+                        @*<li id="quickview-toggle"><a href="#"><i class="icon-bubbles"></i></a></li>*@
+                    </ul>
+                </div>
+                <!-- header-right -->
+            </div>
+            <!-- END TOPBAR -->
+            <!-- BEGIN PAGE CONTENT -->
+            @RenderBody()
+            <!-- END PAGE CONTENT -->
+        </div>
+        <!-- END MAIN CONTENT -->
+        <!-- BEGIN BUILDER -->
+        <!-- END BUILDER -->
+    </section>
+
+
+    @*<div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer></footer>
+        </div>*@
+    <a href="#" class="scrollup"><i class="fa fa-angle-up"></i></a>
+    <script src="~/global/plugins/jquery/jquery-1.11.1.min.js"></script>
+    <script src="~/global/plugins/jquery/jquery-migrate-1.2.1.min.js"></script>
+    <script src="~/global/plugins/jquery-ui/jquery-ui-1.11.2.min.js"></script>
+    <script src="~/global/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/global/plugins/select2/select2.min.js"></script>
+    <script src="~/global/js/application.js"></script>
+    <script src="~/global/js/plugins.js"></script>
+    <script src="~/global/plugins/cke-editor/ckeditor.js"></script>
+    <script src="~/global/plugins/cke-editor/adapters/adapters.min.js"></script>
+    <script src="~/admin/layout1/js/layout.js"></script>
+    <script src="~/global/plugins/datatables/jquery.dataTables.min.js" id="style13"></script> @*Tables Filtering, Sorting & Editing*@
+    <script src="~/global/js/pages/table_dynamic.js"></script>
+    <script src="~/global/plugins/charts-chartjs/Chart.min.js"></script>
+    <script src="~/global/js/widgets/notes.js"></script> <!-- Notes Widget -->
+    <script src="~/global/js/quickview.js"></script> <!-- Chat Script -->
+    @*<script src="~/Scripts/cropimg/jquery.cropit.js"></script>*@
+    @RenderSection("Scripts", false)
+
+    @*<a href="#" class="scrollup"><i class="fa fa-angle-up"></i></a>
+        <script src="~/global/plugins/jquery/jquery-1.11.1.min.js"></script>
+        <script src="~/global/plugins/jquery/jquery-migrate-1.2.1.min.js"></script>
+        <script src="~/global/plugins/jquery-ui/jquery-ui-1.11.2.min.js"></script>
+        <script src="~/global/plugins/gsap/main-gsap.min.js"></script>
+        <script src="~/global/plugins/bootstrap/js/bootstrap.min.js"></script>
+        <script src="~/global/plugins/jquery-cookies/jquery.cookies.min.js"></script> <!-- Jquery Cookies, for theme -->
+        <script src="~/global/plugins/jquery-block-ui/jquery.blockUI.min.js"></script> <!-- simulate synchronous behavior when using AJAX -->
+        <script src="~/global/plugins/bootbox/bootbox.min.js"></script> <!-- Modal with Validation -->
+        <script src="~/global/plugins/mcustom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script> <!-- Custom Scrollbar sidebar -->
+        <script src="~/global/plugins/bootstrap-dropdown/bootstrap-hover-dropdown.min.js"></script> <!-- Show Dropdown on Mouseover -->
+        <script src="~/global/plugins/charts-sparkline/sparkline.min.js"></script> <!-- Charts Sparkline -->
+        <script src="~/global/plugins/retina/retina.min.js"></script> <!-- Retina Display -->
+        <script src="~/global/plugins/select2/select2.min.js"></script> <!-- Select Inputs -->
+        <script src="~/global/plugins/icheck/icheck.min.js"></script> <!-- Checkbox & Radio Inputs -->
+        <script src="~/global/plugins/backstretch/backstretch.min.js"></script> <!-- Background Image -->
+        <script src="~/global/plugins/bootstrap-progressbar/bootstrap-progressbar.min.js"></script> <!-- Animated Progress Bar -->
+        <script src="~/global/plugins/charts-chartjs/Chart.min.js"></script>
+        <script src="~/global/js/builder.js"></script> <!-- Theme Builder -->
+        <script src="~/global/js/sidebar_hover.js"></script> <!-- Sidebar on Hover -->
+        <script src="~/global/js/application.js"></script> <!-- Main Application Script -->
+        <script src="~/global/js/plugins.js"></script> <!-- Main Plugin Initialization Script -->
+        <script src="~/global/js/widgets/notes.js"></script> <!-- Notes Widget -->
+        <script src="~/global/js/quickview.js"></script> <!-- Chat Script -->
+        <script src="~/global/js/pages/search.js"></script> <!-- Search Script -->
+        <!-- BEGIN PAGE SCRIPT -->
+        <script src="~/global/plugins/bootstrap/js/jasny-bootstrap.min.js"></script> <!-- File Upload and Input Masks -->
+        <!-- END PAGE SCRIPTS -->
+        <script src="~/admin/layout1/js/layout.js"></script>*@
+    @*@Scripts.Render("~/bundles/jquery")*@
+    @*  @Scripts.Render("~/bundles/bootstrap")*@
+    @*@RenderSection("scripts", required: false)*@
+
+</body>
+</html>

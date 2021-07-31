@@ -1,0 +1,493 @@
+﻿<style>
+    #area-chart,
+    #line-chart,
+    #bar-chart,
+    #stacked,
+    #pie-chart {
+        min-height: 250px;
+    }
+</style>
+@*<div class="page-content">
+        <h2>Welcom to Admin Panel</h2>
+
+    </div>*@
+
+<!-- BEGIN TOPBAR -->
+<!-- END TOPBAR -->
+<!-- BEGIN PAGE CONTENT -->
+<div class="page-content page-thin">
+    <div class="row">
+
+
+        @*<div class="col-xlg-2 hidden-lg col-clock">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="jquery-clock small" data-jquery-clock="">
+                            <li class="jquery-clock-pin"></li>
+                            <li class="jquery-clock-sec"></li>
+                            <li class="jquery-clock-min"></li>
+                            <li class="jquery-clock-hour"></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="widget-progress-bar">
+                            <div class="clearfix">
+                                <div class="title">Profil Complete</div>
+                                <div class="number">82%</div>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-primary stat1" data-transitiongoal="82"></div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="title">Answer Emails</div>
+                                <div class="number">43%</div>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-primary stat2" data-transitiongoal="43"></div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="title">Server availability</div>
+                                <div class="number">93%</div>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-primary stat3" data-transitiongoal="93"></div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="title">CPU Usage</div>
+                                <div class="number">76%</div>
+                            </div>
+                            <div class="progress m-b-0">
+                                <div class="progress-bar progress-bar-primary stat4" data-transitiongoal="76"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+    </div>
+    <div class="row">
+        @*<div class="col-xlg-4 col-financial-stocks">
+                <div class="panel">
+                    <div class="panel-header panel-controls">
+                        <h3><i class="icon-graph"></i> <strong>Financial</strong> Stock</h3>
+                    </div>
+                    <div class="panel-content widget-full widget-stock stock1">
+                        <div class="tabs tabs-linetriangle">
+                            <ul class="nav nav-tabs nav-4">
+                                <li class="lines-3">
+                                    <a href="#microsoft-tab" id="microsoft" data-toggle="tab">
+                                        <span class="title">Microsoft</span>
+                                        <span class="c-gray"><strong>23.32</strong></span>
+                                        <span class="c-green">+6.214%</span>
+                                    </a>
+                                </li>
+                                <li class="active lines-3">
+                                    <a href="#sony-tab" id="sony" data-toggle="tab">
+                                        <span class="title">Sony</span>
+                                        <span class="c-gray"><strong>23.32</strong></span>
+                                        <span class="c-red">-8.425%</span>
+                                    </a>
+                                </li>
+                                <li class="lines-3">
+                                    <a href="#samsung-tab" id="samsung" data-toggle="tab">
+                                        <span class="title">Samsung</span>
+                                        <span class="c-gray"><strong>23.32</strong></span>
+                                        <span class="c-green">+2.035%</span>
+                                    </a>
+                                </li>
+                                <li class="lines-3">
+                                    <a href="#apple-tab" id="apple" data-toggle="tab">
+                                        <span class="title">Apple</span>
+                                        <span class="c-gray"><strong>23.32</strong></span>
+                                        <span class="c-green">+1.245%</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane" id="microsoft-tab">
+                                    <div id="stock-microsoft"></div>
+                                </div>
+                                <div class="tab-pane active" id="sony-tab">
+                                    <div id="stock-sony"></div>
+                                </div>
+                                <div class="tab-pane" id="samsung-tab">
+                                    <div id="stock-samsung"></div>
+                                </div>
+                                <div class="tab-pane" id="apple-tab">
+                                    <div id="stock-apple"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+        <div class="col-xlg-2 col-small-stats">
+            <div class="row">
+                <div class="col-xlg-12 col-lg-4 col-sm-4">
+                    <div class="panel">
+                        <div class="panel-content widget-small bg-green">
+                            <div class="title">
+                                <h1>Childs</h1>
+                                <p>Last month Added</p>
+                                <span>@ViewBag.childCounter</span>
+                            </div>
+                            <div class="content">
+                                <div id="stock-virgin-sm"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xlg-12 col-lg-4 col-sm-4">
+                    <div class="panel">
+                        <div class="panel-content widget-small bg-purple">
+                            <div class="title">
+                                <h1>Vaccinators</h1>
+                                <p>Active</p>
+                                <span>@ViewBag.VacCounter</span>
+                            </div>
+                            <div class="content">
+                                <div id="stock-ebay-sm"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xlg-12 col-lg-4 col-sm-4">
+                    <div class="panel">
+                        <div class="panel-content widget-small bg-primary">
+                            <div class="title">
+                                <h1>Progress</h1>
+                                <p>Last month trending</p>
+                                <span>90%</span>
+                            </div>
+                            <div class="content">
+                                <div id="stock-facebook-sm"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xlg-6">
+            <div class="panel">
+                <div class="panel-content widget-full widget-stock stock2">
+                    <div class="tab_right">
+
+                        <div class="tab-content">
+
+
+                            
+                            <body>
+                            <div class"row">
+                                    <div class="col-sm-6 text-center" style="display:none;">
+                                        <label class="label label-success">Area Chart</label>
+                                        <div id="area-chart"></div>
+                                    </div>
+                                    <div class="col-sm-6 text-center" style="display:none;">
+                                        <label class="label label-success">Line Chart</label>
+                                        <div id="line-chart"></div>
+                                    </div>
+                                    <div class="col-sm-6 text-center">
+                                        <label class="label label-success">Vaccin Bar</label>
+                                        <div id="bar-chart"></div>
+                                    </div>
+                                    <div class="col-sm-6 text-center" >
+                                        <label class="label label-success">Polio Bar</label>
+                                        <div id="stacked"></div>
+                                    </div>
+                                    <div class="col-sm-6 col-sm-offset-3 text-center" style="display:none;">
+                                        <label class="label label-success">Pie Chart</label>
+                                        <div id="pie-chart"></div>
+                                    </div>
+
+                                </div>
+                            </body>
+                            @*<script src="https://www.amcharts.com/lib/3/amcharts.js?x"></script>
+                                <script src="https://www.amcharts.com/lib/3/serial.js?x"></script>
+                                <script src="https://www.amcharts.com/lib/3/themes/dark.js"></script>
+                                <div id="chartdiv"></div>*@
+                            @*<div class="title-stock">
+                                    <h1>Coverage Map</h1>
+                                    <span class="c-red">80.45%</span>
+                                </div>
+                                <div class="tab-pane" id="yahoo-tab" style="display:none">
+                                    <div id="stock-yahoo"></div>
+                                    <div class="company-info">News Updates</div>
+                                </div>
+                                <div class="tab-pane active" id="google-tab">
+                                    <div id="stock-google"></div>
+                                    <div class="company-info"></div>
+                                </div>
+                                <div class="tab-pane" id="nokia-tab" style="display:none">
+                                    <div id="stock-nokia"></div>
+                                    <div class="company-info">Nokia is a Finnish multinational communications and information technology company. Nokia employed 90,000 people across 120 countries, conducts sales in more than 150 countries and reported annual revenues of around €12.7 billion.</div>
+                                </div>
+                                <div class="tab-pane" id="htc-tab" style="display:none">
+                                    <div id="stock-htc"></div>
+                                    <div class="company-info">HTC Corporation is a Taiwanese manufacturer of smartphones and tablets. Founded in 1997, HTC began designing and manufacturing devices such as mobile phones, touchscreen phones, and PDAs based on Windows Mobile OS.</div>
+                                </div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*<div class="row">
+            <div class="col-md-4 col-sm-6 portlets">
+                <div class="panel">
+                    <div class="panel-header panel-controls">
+                        <h3><i class="icon-list"></i> <strong>Todo</strong> List</h3>
+                    </div>
+                    <div class="panel-content">
+                        <ul class="todo-list ui-sortable">
+                            <li class="high">
+                                <span class="span-check">
+                                    <input id="task-1" type="checkbox" data-checkbox="icheckbox_square-blue" />
+                                    <label for="task-1"></label>
+                                </span>
+                                <span class="todo-task">Send email to Bob Linch</span>
+                                <div class="todo-date clearfix">
+                                    <div class="completed-date"></div>
+                                    <div class="due-date">Due on <span class="due-date-span">15 December 2014</span></div>
+                                </div>
+                                <span class="todo-options pull-right">
+                                    <a href="javascript:;" class="todo-delete"><i class="icons-office-52"></i></a>
+                                </span>
+                                <div class="todo-tags pull-right">
+                                    <div class="label label-success">Work</div>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="span-check">
+                                    <input id="task-2" type="checkbox" data-checkbox="icheckbox_square-blue" />
+                                    <label for="task-2"></label>
+                                </span>
+                                <span class="todo-task">Call datacenter for servers</span>
+                                <div class="todo-date clearfix">
+                                    <div class="completed-date"></div>
+                                    <div class="due-date">Due on <span class="due-date-span">7 January</span></div>
+                                </div>
+                                <span class="todo-options pull-right">
+                                    <a href="javascript:;" class="todo-delete"><i class="icons-office-52"></i></a>
+                                </span>
+                            </li>
+                            <li class="low">
+                                <span class="span-check">
+                                    <input id="task-3" type="checkbox" data-checkbox="icheckbox_square-blue" />
+                                    <label for="task-3"></label>
+                                </span>
+                                <span class="todo-task">Remove all unused icons</span>
+                                <div class="todo-date clearfix">
+                                    <div class="completed-date"></div>
+                                    <div class="due-date">Due on <span class="due-date-span">5 January</span></div>
+                                </div>
+                                <span class="todo-options pull-right">
+                                    <a href="javascript:;" class="todo-delete"><i class="icons-office-52"></i></a>
+                                </span>
+                            </li>
+                            <li class="medium">
+                                <span class="span-check">
+                                    <input id="task-4" type="checkbox" data-checkbox="icheckbox_square-blue" />
+                                    <label for="task-4"></label>
+                                </span>
+                                <span class="todo-task">Read my todo list</span>
+                                <div class="todo-date clearfix">
+                                    <div class="completed-date"></div>
+                                    <div class="due-date">Due on <span class="due-date-span">4 January</span></div>
+                                </div>
+                                <span class="todo-options pull-right">
+                                    <a href="javascript:;" class="todo-delete"><i class="icons-office-52"></i></a>
+                                </span>
+                                <div class="todo-tags pull-right">
+                                    <div class="label label-info">Tuesday</div>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="span-check">
+                                    <input id="task-6" type="checkbox" data-checkbox="icheckbox_square-blue" />
+                                    <label for="task-6"></label>
+                                </span>
+                                <span class="todo-task">Have a breakfeast before 12</span>
+                                <div class="todo-date clearfix">
+                                    <div class="completed-date"></div>
+                                    <div class="due-date">Due on <span class="due-date-span">1 January</span></div>
+                                </div>
+                                <span class="todo-options pull-right">
+                                    <a href="javascript:;" class="todo-delete"><i class="icons-office-52"></i></a>
+                                </span>
+                            </li>
+                        </ul>
+                        <div class="clearfix m-t-10">
+                            <div class="pull-left">
+                                <button type="button" class="btn btn-sm btn-default check-all-tasks">Check All Done</button>
+                            </div>
+                            <div class="pull-right">
+                                <button type="button" class="btn btn-sm btn-dark add-task">Add Task</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 portlets">
+                <div class="panel widget-weather"></div>
+                <div class="panel widget-member clearfix">
+                    <div class="col-xs-3">
+                        <img src="~/global/images/avatars/user2.png" alt="avatar 12" class="pull-left img-responsive">
+                    </div>
+                    <div class="col-xs-9">
+                        <h3 class="m-t-0 member-name"><strong>John Snow</strong></h3>
+                        <p class="member-job">Software Engineer</p>
+                        <div class="row">
+                            <div class="col-xlg-6">
+                                <p><i class="icon-envelope c-gray-light p-r-10"></i> cameso@it.com</p>
+                                <p><i class="fa fa-facebook c-gray-light p-r-10"></i> fb.com/jsnow</p>
+                            </div>
+                            <div class="col-xlg-6 align-right">
+                                <p><i class="icon-calendar c-gray-light p-r-10"></i> 6 may 2014</p>
+                                <p><i class="icon-target c-gray-light p-r-10"></i> New York</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 portlets">
+                <div class="widget widget_calendar bg-dark">
+                    <div class="multidatepicker"></div>
+                </div>
+                <div class="panel m-t-0">
+                    <div class="panel-header panel-controls">
+                        <h3><i class="icon-basket"></i> <strong>Sales</strong> Volume Stats</h3>
+                    </div>
+                    <div class="panel-content p-t-0 p-b-0">
+                        <div id="bar-chart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+    @*<div class="footer">
+            <div class="copyright">
+                <p class="pull-left sm-pull-reset">
+                    <span>Copyright <span class="copyright">©</span> 2015 </span>
+                    <span>THEMES LAB</span>.
+                    <span>All rights reserved. </span>
+                </p>
+                <p class="pull-right sm-pull-reset">
+                    <span><a href="#" class="m-r-10">Support</a> | <a href="#" class="m-l-10 m-r-10">Terms of use</a> | <a href="#" class="m-l-10">Privacy Policy</a></span>
+                </p>
+            </div>
+        </div>*@
+</div>
+<!-- END PAGE CONTENT -->
+@*<div class="main-content">
+        <div class="page-content page-thin">
+
+            <input id="Hidden_Pass" type="hidden" name="Hidden_Pass" value="">
+            <div class="alertForTask" style="display: none;">
+
+                <ul class="noty_inline_layout_container i-am-new" style="width: auto; height: auto; margin: 0px; padding: 0px; list-style-type: none; z-index: 9999999; top: 0px; left: 0px;">
+                    <li class="made noty_container_type_alert animated fadeIn" style="cursor: pointer; height: 63px;">
+                        <div class="noty_bar noty_type_alert" id="noty_1004447543995130600">
+                            <div class="noty_message">
+                                <span class="noty_text">
+                                    <div class="alert alert-success media fade in">
+                                        <p><strong></strong></p>
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+
+
+
+
+
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <div id="UserRegisterd" style="height: 370px; width: 100%;"><div class="canvasjs-chart-container" style="position: relative; text-align: left; cursor: auto; direction: ltr;"><canvas class="canvasjs-chart-canvas" width="463" height="370" style="position: absolute; user-select: none;"></canvas><canvas class="canvasjs-chart-canvas" width="463" height="370" style="position: absolute; -webkit-tap-highlight-color: transparent; user-select: none; cursor: default;"></canvas><div class="canvasjs-chart-toolbar" style="position: absolute; right: 1px; top: 1px; border: 1px solid transparent;"></div><div class="canvasjs-chart-tooltip" style="position: absolute; height: auto; box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 2px 2px; z-index: 1000; pointer-events: none; display: none; border-radius: 0px; left: 317px; bottom: -313.222px; transition: left 0.1s ease-out 0s, bottom 0.1s ease-out 0s;"><div style="width: auto; height: auto; min-width: 50px; margin: 0px; padding: 5px; font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif; font-weight: normal; font-style: normal; font-size: 14px; color: black; text-shadow: rgba(0, 0, 0, 0.1) 1px 1px 1px; text-align: left; border: 1px solid rgb(79, 129, 188); background: rgba(255, 255, 255, 0.9); text-indent: 0px; white-space: nowrap; border-radius: 0px; user-select: none;"><span style="color:#4F81BC;">Sep 20:</span>&nbsp;&nbsp;5</div></div><a class="canvasjs-chart-credit" title="JavaScript Charts" style="outline:none;margin:0px;position:absolute;right:2px;top:356px;color:dimgrey;text-decoration:none;font-size:11px;font-family: Calibri, Lucida Grande, Lucida Sans Unicode, Arial, sans-serif" tabindex="-1" target="_blank" href="https://canvasjs.com/">CanvasJS.com</a></div></div>
+                </div>
+                <div class="col-md-6">
+                    <div id="postedJobs" style="height: 370px; width: 100%;"><div class="canvasjs-chart-container" style="position: relative; text-align: left; cursor: auto; direction: ltr;"><canvas class="canvasjs-chart-canvas" width="463" height="370" style="position: absolute; user-select: none;"></canvas><canvas class="canvasjs-chart-canvas" width="463" height="370" style="position: absolute; -webkit-tap-highlight-color: transparent; user-select: none; cursor: default;"></canvas><div class="canvasjs-chart-toolbar" style="position: absolute; right: 1px; top: 1px; border: 1px solid transparent;"></div><div class="canvasjs-chart-tooltip" style="position: absolute; height: auto; box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 2px 2px; z-index: 1000; pointer-events: none; display: none; border-radius: 0px; left: 84px; bottom: -61px;"><div style="width: auto; height: auto; min-width: 50px; margin: 0px; padding: 5px; font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif; font-weight: normal; font-style: normal; font-size: 14px; color: black; text-shadow: rgba(0, 0, 0, 0.1) 1px 1px 1px; text-align: left; border: 1px solid rgb(128, 100, 161); background: rgba(255, 255, 255, 0.9); text-indent: 0px; white-space: nowrap; border-radius: 0px; user-select: none;"><span style="color:#8064A1;">Mar 20:</span>&nbsp;&nbsp;57,169</div></div><a class="canvasjs-chart-credit" title="JavaScript Charts" style="outline:none;margin:0px;position:absolute;right:2px;top:356px;color:dimgrey;text-decoration:none;font-size:11px;font-family: Calibri, Lucida Grande, Lucida Sans Unicode, Arial, sans-serif" tabindex="-1" target="_blank" href="https://canvasjs.com/">CanvasJS.com</a></div></div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <br>
+
+                <br>
+
+                <div class="col-md-6">
+                    <div id="noOfjobs" style="height: 370px; width: 100%;"><div class="canvasjs-chart-container" style="position: relative; text-align: left; cursor: auto; direction: ltr;"><canvas class="canvasjs-chart-canvas" width="463" height="370" style="position: absolute; user-select: none;"></canvas><canvas class="canvasjs-chart-canvas" width="463" height="370" style="position: absolute; -webkit-tap-highlight-color: transparent; user-select: none;"></canvas><div class="canvasjs-chart-toolbar" style="position: absolute; right: 1px; top: 1px; border: 1px solid transparent;"></div><div class="canvasjs-chart-tooltip" style="position: absolute; height: auto; box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 2px 2px; z-index: 1000; pointer-events: none; display: none; border-radius: 5px;"><div style=" width: auto;height: auto;min-width: 50px;line-height: auto;margin: 0px 0px 0px 0px;padding: 5px;font-family: Calibri, Arial, Georgia, serif;font-weight: normal;font-style: italic;font-size: 14px;color: #000000;text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);text-align: left;border: 2px solid gray;background: rgba(255,255,255,.9);text-indent: 0px;white-space: nowrap;border-radius: 5px;-moz-user-select:none;-khtml-user-select: none;-webkit-user-select: none;-ms-user-select: none;user-select: none;} "> Sample Tooltip</div></div><a class="canvasjs-chart-credit" title="JavaScript Charts" style="outline:none;margin:0px;position:absolute;right:2px;top:356px;color:dimgrey;text-decoration:none;font-size:11px;font-family: Calibri, Lucida Grande, Lucida Sans Unicode, Arial, sans-serif" tabindex="-1" target="_blank" href="https://canvasjs.com/">CanvasJS.com</a></div></div>
+                </div>
+
+                <div class="col-md-6">
+                    <div id="noOfjobsByComp" style="height: 370px; width: 100%;"><div class="canvasjs-chart-container" style="position: relative; text-align: left; cursor: auto; direction: ltr;"><canvas class="canvasjs-chart-canvas" width="463" height="370" style="position: absolute; user-select: none;"></canvas><canvas class="canvasjs-chart-canvas" width="463" height="370" style="position: absolute; -webkit-tap-highlight-color: transparent; user-select: none;"></canvas><div class="canvasjs-chart-toolbar" style="position: absolute; right: 1px; top: 1px; border: 1px solid transparent;"></div><div class="canvasjs-chart-tooltip" style="position: absolute; height: auto; box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 2px 2px; z-index: 1000; pointer-events: none; display: none; border-radius: 5px;"><div style=" width: auto;height: auto;min-width: 50px;line-height: auto;margin: 0px 0px 0px 0px;padding: 5px;font-family: Calibri, Arial, Georgia, serif;font-weight: normal;font-style: italic;font-size: 14px;color: #000000;text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);text-align: left;border: 2px solid gray;background: rgba(255,255,255,.9);text-indent: 0px;white-space: nowrap;border-radius: 5px;-moz-user-select:none;-khtml-user-select: none;-webkit-user-select: none;-ms-user-select: none;user-select: none;} "> Sample Tooltip</div></div><a class="canvasjs-chart-credit" title="JavaScript Charts" style="outline:none;margin:0px;position:absolute;right:2px;top:356px;color:dimgrey;text-decoration:none;font-size:11px;font-family: Calibri, Lucida Grande, Lucida Sans Unicode, Arial, sans-serif" tabindex="-1" target="_blank" href="https://canvasjs.com/">CanvasJS.com</a></div></div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <br>
+
+                <br>
+
+                <div class="col-md-6">
+                    <div id="noOfjobsByNewspaper" style="height: 370px; width: 100%;"><div class="canvasjs-chart-container" style="position: relative; text-align: left; cursor: auto; direction: ltr;"><canvas class="canvasjs-chart-canvas" width="463" height="370" style="position: absolute; user-select: none;"></canvas><canvas class="canvasjs-chart-canvas" width="463" height="370" style="position: absolute; -webkit-tap-highlight-color: transparent; user-select: none;"></canvas><div class="canvasjs-chart-toolbar" style="position: absolute; right: 1px; top: 1px; border: 1px solid transparent;"></div><div class="canvasjs-chart-tooltip" style="position: absolute; height: auto; box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 2px 2px; z-index: 1000; pointer-events: none; display: none; border-radius: 5px;"><div style=" width: auto;height: auto;min-width: 50px;line-height: auto;margin: 0px 0px 0px 0px;padding: 5px;font-family: Calibri, Arial, Georgia, serif;font-weight: normal;font-style: italic;font-size: 14px;color: #000000;text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);text-align: left;border: 2px solid gray;background: rgba(255,255,255,.9);text-indent: 0px;white-space: nowrap;border-radius: 5px;-moz-user-select:none;-khtml-user-select: none;-webkit-user-select: none;-ms-user-select: none;user-select: none;} "> Sample Tooltip</div></div><a class="canvasjs-chart-credit" title="JavaScript Charts" style="outline:none;margin:0px;position:absolute;right:2px;top:356px;color:dimgrey;text-decoration:none;font-size:11px;font-family: Calibri, Lucida Grande, Lucida Sans Unicode, Arial, sans-serif" tabindex="-1" target="_blank" href="https://canvasjs.com/">CanvasJS.com</a></div></div>
+                </div>
+
+                <div class="col-md-6">
+                    <div id="pdflogs" style="height: 370px; width: 100%;"><div class="canvasjs-chart-container" style="position: relative; text-align: left; cursor: auto; direction: ltr;"><canvas class="canvasjs-chart-canvas" width="463" height="370" style="position: absolute; user-select: none;"></canvas><canvas class="canvasjs-chart-canvas" width="463" height="370" style="position: absolute; -webkit-tap-highlight-color: transparent; user-select: none;"></canvas><div class="canvasjs-chart-toolbar" style="position: absolute; right: 1px; top: 1px; border: 1px solid transparent;"></div><div class="canvasjs-chart-tooltip" style="position: absolute; height: auto; box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 2px 2px; z-index: 1000; pointer-events: none; display: none; border-radius: 5px;"><div style=" width: auto;height: auto;min-width: 50px;line-height: auto;margin: 0px 0px 0px 0px;padding: 5px;font-family: Calibri, Arial, Georgia, serif;font-weight: normal;font-style: italic;font-size: 14px;color: #000000;text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);text-align: left;border: 2px solid gray;background: rgba(255,255,255,.9);text-indent: 0px;white-space: nowrap;border-radius: 5px;-moz-user-select:none;-khtml-user-select: none;-webkit-user-select: none;-ms-user-select: none;user-select: none;} "> Sample Tooltip</div></div><a class="canvasjs-chart-credit" title="JavaScript Charts" style="outline:none;margin:0px;position:absolute;right:2px;top:356px;color:dimgrey;text-decoration:none;font-size:11px;font-family: Calibri, Lucida Grande, Lucida Sans Unicode, Arial, sans-serif" tabindex="-1" target="_blank" href="https://canvasjs.com/">CanvasJS.com</a></div></div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>*@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.0/morris.min.js"></script>
+
+<script>
+    var data = [
+        { y: '2014', a: 50, b: 90 },
+        { y: '2015', a: 65, b: 75 },
+        { y: '2016', a: 50, b: 50 },
+        { y: '2017', a: 75, b: 60 },
+        { y: '2018', a: 80, b: 65 },
+        { y: '2019', a: 90, b: 70 },
+        { y: '2020', a: @ViewBag.VacChild, b:@ViewBag.Polio  }
+        
+    ],
+        config = {
+            data: data,
+            xkey: 'y',
+            ykeys: ['a', 'b'],
+            labels: ['Total Vaccinated Childs  ', 'Polio Vaccination '],
+            fillOpacity: 0.6,
+            hideHover: 'auto',
+            behaveLikeLine: true,
+            resize: true,
+            pointFillColors: ['#ffffff'],
+            pointStrokeColors: ['black'],
+            lineColors: ['gray', 'red']
+        };
+    config.element = 'area-chart';
+    Morris.Area(config);
+    config.element = 'line-chart';
+    Morris.Line(config);
+    config.element = 'bar-chart';
+    Morris.Bar(config);
+    config.element = 'stacked';
+    config.stacked = true;
+    Morris.Bar(config);
+    Morris.Donut({
+        element: 'pie-chart',
+        data: [
+            { label: "Friends", value: 30 },
+            { label: "Allies", value: 15 },
+            { label: "Enemies", value: 45 },
+            { label: "Neutral", value: 10 }
+        ]
+    });
+</script>

@@ -1,0 +1,154 @@
+﻿@model VaccineManagment.Models.ChildInfo
+
+@{
+    ViewBag.Title = "AddPublication";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    // Layout = null;
+}
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+
+        function isNumber(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+
+                $('#erormsg').css('display', 'block');
+                return false;
+            }
+            else {
+                $('#erormsg').css('display', 'none');
+                return true;
+            }
+        }
+    </script>
+
+<div class="page-content">
+
+    <div class="row">
+        <div class="col-lg-12 portlets">
+            <div class="panel">
+                <div class="panel-header panel-controls">
+                    <h3><a href="/Child/ManageChild" class="btn btn-dark">Manage Childs</a></h3>
+                </div>
+
+                <form method="post" id="myform" action="/Child/AddUpdate">
+                    <div class="panel-content">
+                        <p id="ilyas"></p>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label"> Name*</label>
+                                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @placeholder = "Enter  Name",@maxlength="30", @minlength="5", @required = "required" })
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Father CNIC*</label>
+                                    @Html.TextBoxFor(model => model.Father_CNIC, new { @class = "form-control",@onkeypress="return isNumber()", @placeholder = "Enter  Father CNIC",@maxlength="13", @minlength="13", @required = "required" })
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Select Gender*</label>
+                                    @Html.DropDownListFor(model => model.Gen_ID, ViewBag.Glist as SelectList, "---Select---", new { @class = "form-control", @placeholder = "Enter  Name", @required = "required" })
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Select UC*</label>
+                                    @Html.DropDownListFor(model => model.UCID, ViewBag.list as SelectList, "---Select---", new { @class = "form-control", @placeholder = "Enter  Name", @required = "required" })
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label">Father Name*</label>
+                                    @Html.TextBoxFor(model => model.Father_Name, new { @class = "form-control", @placeholder = "Enter Father Name",@maxlength="30", @minlength="5", @required = "required" })
+                                </div>
+                                @if (Model != null)
+                                {
+                                    <div class="form-group">
+                                        <label class="form-label">DOB*</label>
+                                        @Html.TextBoxFor(model => model.DOB, new { @class = "form-control", @type = "date", @Value = DateTime.Now.ToString("yyyy-MM-dd"), @required = "required" })
+                                    </div>
+                                }
+                                else
+                                {
+
+                                    <div class="form-group">
+                                        <label class="form-label">DOB*</label>
+                                        @Html.TextBoxFor(model => model.DOB, new { @class = "form-control", @type = "date", @required = "required" })
+                                    </div>
+                                }
+                                <div class="form-group">
+                                    <label class="form-label">Muhalla *</label>
+                                    @Html.DropDownListFor(model => model.MID, new SelectList(""), "---Select---", new { @class = "form-control", @required = "required" })
+                                </div>
+
+
+                            </div>
+                            <div class="col-md-6">
+
+                            </div>
+                        </div>
+                        @{
+                            string Text = "Add ";
+                            if (Model != null)
+                            {
+                                Text = "Update ";
+                                <input type="hidden" name="Id" value="@Model.Id" />
+                            }
+                        }
+                        <button class="btn btn-dark">@Text</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    @*<div class="footer">
+            <div class="copyright">
+                <p class="pull-left sm-pull-reset">
+                    <span>Copyright <span class="copyright">©</span> 2015 </span>
+                    <span>THEMES LAB</span>.
+                    <span>All rights reserved. </span>
+                </p>
+                <p class="pull-right sm-pull-reset">
+                    <span><a href="#" class="m-r-10">Support</a> | <a href="#" class="m-l-10 m-r-10">Terms of use</a> | <a href="#" class="m-l-10">Privacy Policy</a></span>
+                </p>
+            </div>
+        </div>*@
+</div>
+
+@section Scripts{
+   
+    <script>
+        $("#UCID").change(function () {
+            $.ajax({
+                type: "POST",
+                url: "/Child/GetMohalla?id=" + $(this).val(),
+                
+                success: function (data) {
+                   
+                    $("#MID").empty();
+
+                    $("#MID").append(data);
+                    //$.each(data, function (index, value) {
+                       
+                    // $("#MID").append("<option value='" + value.id + "'>" + value.name + "</option>")
+                    //})
+                }
+            })
+        })
+        //$("#UCID").append
+        //$("#UCID").append("<option value='4'>UC 6999</option>")
+        // $("#UCID").append("<option value='4'>UC 6999</option>")
+      //  $("#ilyas")
+    </script>
+}
+<script>
+
+
+</script>
+
+
+
+
+

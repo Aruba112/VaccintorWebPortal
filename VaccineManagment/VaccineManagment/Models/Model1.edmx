@@ -1,0 +1,827 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="VaccineSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ChildInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Gen_ID" Type="int" Nullable="false" />
+          <Property Name="DOB" Type="datetime" Nullable="false" />
+          <Property Name="Father_Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Father_CNIC" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UCID" Type="int" Nullable="false" />
+          <Property Name="MID" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Complaints">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Parent_Id" Type="int" Nullable="false" />
+          <Property Name="Date" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Muhalla">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UcId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Parent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CNIC" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UCID" Type="int" Nullable="false" />
+          <Property Name="MID" Type="int" Nullable="false" />
+          <Property Name="Mobile" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Schedual">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Child_Id" Type="int" Nullable="false" />
+          <Property Name="Vac_Id" Type="int" Nullable="false" />
+          <Property Name="Vaccination_Date" Type="date" />
+          <Property Name="Next_Date" Type="date" />
+          <Property Name="Polio" Type="bit" Nullable="false" />
+          <Property Name="Inject" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tblPolio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ChildId" Type="int" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="VacName" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="UnionCouncil">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UCName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Vaccinator">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CNIC" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gen_Id" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mobile" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UCID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VaccinatorTask">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Time" Type="nvarchar(max)" />
+          <Property Name="Vac_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ChildInfo_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="ChildInfo" Type="Self.ChildInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChildInfo">
+              <PropertyRef Name="Gen_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChildInfo_Muhalla">
+          <End Role="Muhalla" Type="Self.Muhalla" Multiplicity="1" />
+          <End Role="ChildInfo" Type="Self.ChildInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Muhalla">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChildInfo">
+              <PropertyRef Name="MID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChildInfo_UnionCouncil">
+          <End Role="UnionCouncil" Type="Self.UnionCouncil" Multiplicity="1" />
+          <End Role="ChildInfo" Type="Self.ChildInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnionCouncil">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChildInfo">
+              <PropertyRef Name="UCID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Complaints_Parent">
+          <End Role="Parent" Type="Self.Parent" Multiplicity="1" />
+          <End Role="Complaints" Type="Self.Complaints" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parent">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Complaints">
+              <PropertyRef Name="Parent_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Muhalla_UnionCouncil">
+          <End Role="UnionCouncil" Type="Self.UnionCouncil" Multiplicity="1" />
+          <End Role="Muhalla" Type="Self.Muhalla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnionCouncil">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Muhalla">
+              <PropertyRef Name="UcId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Parent_Muhalla">
+          <End Role="Muhalla" Type="Self.Muhalla" Multiplicity="1" />
+          <End Role="Parent" Type="Self.Parent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Muhalla">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Parent">
+              <PropertyRef Name="MID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Parent_UnionCouncil">
+          <End Role="UnionCouncil" Type="Self.UnionCouncil" Multiplicity="1" />
+          <End Role="Parent" Type="Self.Parent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnionCouncil">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Parent">
+              <PropertyRef Name="UCID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedual_ChildInfo">
+          <End Role="ChildInfo" Type="Self.ChildInfo" Multiplicity="1" />
+          <End Role="Schedual" Type="Self.Schedual" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChildInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Schedual">
+              <PropertyRef Name="Child_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedual_Vaccinator">
+          <End Role="Vaccinator" Type="Self.Vaccinator" Multiplicity="1" />
+          <End Role="Schedual" Type="Self.Schedual" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vaccinator">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Schedual">
+              <PropertyRef Name="Vac_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vaccinator_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Vaccinator" Type="Self.Vaccinator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vaccinator">
+              <PropertyRef Name="Gen_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vaccinator_UnionCouncil">
+          <End Role="UnionCouncil" Type="Self.UnionCouncil" Multiplicity="1" />
+          <End Role="Vaccinator" Type="Self.Vaccinator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnionCouncil">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vaccinator">
+              <PropertyRef Name="UCID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VaccineSystemModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChildInfo" EntityType="Self.ChildInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Complaints" EntityType="Self.Complaints" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Muhalla" EntityType="Self.Muhalla" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Parent" EntityType="Self.Parent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Schedual" EntityType="Self.Schedual" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPolio" EntityType="Self.tblPolio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UnionCouncil" EntityType="Self.UnionCouncil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vaccinator" EntityType="Self.Vaccinator" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VaccinatorTask" EntityType="Self.VaccinatorTask" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ChildInfo_Gender" Association="Self.FK_ChildInfo_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="ChildInfo" EntitySet="ChildInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChildInfo_Muhalla" Association="Self.FK_ChildInfo_Muhalla">
+            <End Role="Muhalla" EntitySet="Muhalla" />
+            <End Role="ChildInfo" EntitySet="ChildInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChildInfo_UnionCouncil" Association="Self.FK_ChildInfo_UnionCouncil">
+            <End Role="UnionCouncil" EntitySet="UnionCouncil" />
+            <End Role="ChildInfo" EntitySet="ChildInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Complaints_Parent" Association="Self.FK_Complaints_Parent">
+            <End Role="Parent" EntitySet="Parent" />
+            <End Role="Complaints" EntitySet="Complaints" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Muhalla_UnionCouncil" Association="Self.FK_Muhalla_UnionCouncil">
+            <End Role="UnionCouncil" EntitySet="UnionCouncil" />
+            <End Role="Muhalla" EntitySet="Muhalla" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Parent_Muhalla" Association="Self.FK_Parent_Muhalla">
+            <End Role="Muhalla" EntitySet="Muhalla" />
+            <End Role="Parent" EntitySet="Parent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Parent_UnionCouncil" Association="Self.FK_Parent_UnionCouncil">
+            <End Role="UnionCouncil" EntitySet="UnionCouncil" />
+            <End Role="Parent" EntitySet="Parent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedual_ChildInfo" Association="Self.FK_Schedual_ChildInfo">
+            <End Role="ChildInfo" EntitySet="ChildInfo" />
+            <End Role="Schedual" EntitySet="Schedual" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedual_Vaccinator" Association="Self.FK_Schedual_Vaccinator">
+            <End Role="Vaccinator" EntitySet="Vaccinator" />
+            <End Role="Schedual" EntitySet="Schedual" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vaccinator_Gender" Association="Self.FK_Vaccinator_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Vaccinator" EntitySet="Vaccinator" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vaccinator_UnionCouncil" Association="Self.FK_Vaccinator_UnionCouncil">
+            <End Role="UnionCouncil" EntitySet="UnionCouncil" />
+            <End Role="Vaccinator" EntitySet="Vaccinator" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VaccineSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ChildInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Gen_ID" Type="Int32" Nullable="false" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Father_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Father_CNIC" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="UCID" Type="Int32" Nullable="false" />
+          <Property Name="MID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK_ChildInfo_Gender" FromRole="ChildInfo" ToRole="Gender" />
+          <NavigationProperty Name="Muhalla" Relationship="Self.FK_ChildInfo_Muhalla" FromRole="ChildInfo" ToRole="Muhalla" />
+          <NavigationProperty Name="UnionCouncil" Relationship="Self.FK_ChildInfo_UnionCouncil" FromRole="ChildInfo" ToRole="UnionCouncil" />
+          <NavigationProperty Name="Scheduals" Relationship="VaccineSystemModel.FK_Schedual_ChildInfo" FromRole="ChildInfo" ToRole="Schedual" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ChildInfoes" Relationship="Self.FK_ChildInfo_Gender" FromRole="Gender" ToRole="ChildInfo" />
+          <NavigationProperty Name="Vaccinators" Relationship="Self.FK_Vaccinator_Gender" FromRole="Gender" ToRole="Vaccinator" />
+        </EntityType>
+        <EntityType Name="Muhalla">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UcId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ChildInfoes" Relationship="Self.FK_ChildInfo_Muhalla" FromRole="Muhalla" ToRole="ChildInfo" />
+          <NavigationProperty Name="UnionCouncil" Relationship="Self.FK_Muhalla_UnionCouncil" FromRole="Muhalla" ToRole="UnionCouncil" />
+          <NavigationProperty Name="Parents" Relationship="Self.FK_Parent_Muhalla" FromRole="Muhalla" ToRole="Parent" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Parent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CNIC" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="UCID" Type="Int32" Nullable="false" />
+          <Property Name="MID" Type="Int32" Nullable="false" />
+          <Property Name="Mobile" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="Muhalla" Relationship="Self.FK_Parent_Muhalla" FromRole="Parent" ToRole="Muhalla" />
+          <NavigationProperty Name="UnionCouncil" Relationship="Self.FK_Parent_UnionCouncil" FromRole="Parent" ToRole="UnionCouncil" />
+          <NavigationProperty Name="Complaints" Relationship="VaccineSystemModel.FK_Complaints_Parent" FromRole="Parent" ToRole="Complaint" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UnionCouncil">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UCName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ChildInfoes" Relationship="Self.FK_ChildInfo_UnionCouncil" FromRole="UnionCouncil" ToRole="ChildInfo" />
+          <NavigationProperty Name="Muhallas" Relationship="Self.FK_Muhalla_UnionCouncil" FromRole="UnionCouncil" ToRole="Muhalla" />
+          <NavigationProperty Name="Parents" Relationship="Self.FK_Parent_UnionCouncil" FromRole="UnionCouncil" ToRole="Parent" />
+          <NavigationProperty Name="Vaccinators" Relationship="Self.FK_Vaccinator_UnionCouncil" FromRole="UnionCouncil" ToRole="Vaccinator" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Vaccinator">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CNIC" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Gen_Id" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Mobile" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UCID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK_Vaccinator_Gender" FromRole="Vaccinator" ToRole="Gender" />
+          <NavigationProperty Name="UnionCouncil" Relationship="Self.FK_Vaccinator_UnionCouncil" FromRole="Vaccinator" ToRole="UnionCouncil" />
+          <NavigationProperty Name="Scheduals" Relationship="VaccineSystemModel.FK_Schedual_Vaccinator" FromRole="Vaccinator" ToRole="Schedual" />
+        </EntityType>
+        <Association Name="FK_ChildInfo_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="ChildInfo" Type="Self.ChildInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChildInfo">
+              <PropertyRef Name="Gen_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChildInfo_Muhalla">
+          <End Role="Muhalla" Type="Self.Muhalla" Multiplicity="1" />
+          <End Role="ChildInfo" Type="Self.ChildInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Muhalla">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChildInfo">
+              <PropertyRef Name="MID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChildInfo_UnionCouncil">
+          <End Role="UnionCouncil" Type="Self.UnionCouncil" Multiplicity="1" />
+          <End Role="ChildInfo" Type="Self.ChildInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnionCouncil">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChildInfo">
+              <PropertyRef Name="UCID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vaccinator_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Vaccinator" Type="Self.Vaccinator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vaccinator">
+              <PropertyRef Name="Gen_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Muhalla_UnionCouncil">
+          <End Role="UnionCouncil" Type="Self.UnionCouncil" Multiplicity="1" />
+          <End Role="Muhalla" Type="Self.Muhalla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnionCouncil">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Muhalla">
+              <PropertyRef Name="UcId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Parent_Muhalla">
+          <End Role="Muhalla" Type="Self.Muhalla" Multiplicity="1" />
+          <End Role="Parent" Type="Self.Parent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Muhalla">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Parent">
+              <PropertyRef Name="MID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Parent_UnionCouncil">
+          <End Role="UnionCouncil" Type="Self.UnionCouncil" Multiplicity="1" />
+          <End Role="Parent" Type="Self.Parent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnionCouncil">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Parent">
+              <PropertyRef Name="UCID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vaccinator_UnionCouncil">
+          <End Role="UnionCouncil" Type="Self.UnionCouncil" Multiplicity="1" />
+          <End Role="Vaccinator" Type="Self.Vaccinator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnionCouncil">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vaccinator">
+              <PropertyRef Name="UCID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VaccineSystemEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="ChildInfoes" EntityType="Self.ChildInfo" />
+          <EntitySet Name="Genders" EntityType="Self.Gender" />
+          <EntitySet Name="Muhallas" EntityType="Self.Muhalla" />
+          <EntitySet Name="Parents" EntityType="Self.Parent" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="UnionCouncils" EntityType="Self.UnionCouncil" />
+          <EntitySet Name="Vaccinators" EntityType="Self.Vaccinator" />
+          <AssociationSet Name="FK_ChildInfo_Gender" Association="Self.FK_ChildInfo_Gender">
+            <End Role="Gender" EntitySet="Genders" />
+            <End Role="ChildInfo" EntitySet="ChildInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChildInfo_Muhalla" Association="Self.FK_ChildInfo_Muhalla">
+            <End Role="Muhalla" EntitySet="Muhallas" />
+            <End Role="ChildInfo" EntitySet="ChildInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChildInfo_UnionCouncil" Association="Self.FK_ChildInfo_UnionCouncil">
+            <End Role="UnionCouncil" EntitySet="UnionCouncils" />
+            <End Role="ChildInfo" EntitySet="ChildInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vaccinator_Gender" Association="Self.FK_Vaccinator_Gender">
+            <End Role="Gender" EntitySet="Genders" />
+            <End Role="Vaccinator" EntitySet="Vaccinators" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Muhalla_UnionCouncil" Association="Self.FK_Muhalla_UnionCouncil">
+            <End Role="UnionCouncil" EntitySet="UnionCouncils" />
+            <End Role="Muhalla" EntitySet="Muhallas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Parent_Muhalla" Association="Self.FK_Parent_Muhalla">
+            <End Role="Muhalla" EntitySet="Muhallas" />
+            <End Role="Parent" EntitySet="Parents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Parent_UnionCouncil" Association="Self.FK_Parent_UnionCouncil">
+            <End Role="UnionCouncil" EntitySet="UnionCouncils" />
+            <End Role="Parent" EntitySet="Parents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vaccinator_UnionCouncil" Association="Self.FK_Vaccinator_UnionCouncil">
+            <End Role="UnionCouncil" EntitySet="UnionCouncils" />
+            <End Role="Vaccinator" EntitySet="Vaccinators" />
+          </AssociationSet>
+          <EntitySet Name="Complaints" EntityType="VaccineSystemModel.Complaint" />
+          <AssociationSet Name="FK_Complaints_Parent" Association="VaccineSystemModel.FK_Complaints_Parent">
+            <End Role="Parent" EntitySet="Parents" />
+            <End Role="Complaint" EntitySet="Complaints" />
+          </AssociationSet>
+          <EntitySet Name="Scheduals" EntityType="VaccineSystemModel.Schedual" />
+          <AssociationSet Name="FK_Schedual_ChildInfo" Association="VaccineSystemModel.FK_Schedual_ChildInfo">
+            <End Role="ChildInfo" EntitySet="ChildInfoes" />
+            <End Role="Schedual" EntitySet="Scheduals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedual_Vaccinator" Association="VaccineSystemModel.FK_Schedual_Vaccinator">
+            <End Role="Vaccinator" EntitySet="Vaccinators" />
+            <End Role="Schedual" EntitySet="Scheduals" />
+          </AssociationSet>
+          <EntitySet Name="tblPolios" EntityType="VaccineSystemModel.tblPolio" />
+          <EntitySet Name="VaccinatorTasks" EntityType="VaccineSystemModel.VaccinatorTask" />
+        </EntityContainer>
+        <EntityType Name="Complaint">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Parent_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Parent" Relationship="VaccineSystemModel.FK_Complaints_Parent" FromRole="Complaint" ToRole="Parent" />
+          <Property Name="Date" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Complaints_Parent">
+          <End Type="VaccineSystemModel.Parent" Role="Parent" Multiplicity="1" />
+          <End Type="VaccineSystemModel.Complaint" Role="Complaint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parent">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Complaint">
+              <PropertyRef Name="Parent_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Schedual">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Child_Id" Type="Int32" Nullable="false" />
+          <Property Name="Vac_Id" Type="Int32" Nullable="false" />
+          <Property Name="Vaccination_Date" Type="DateTime" Precision="0" />
+          <Property Name="Next_Date" Type="DateTime" Precision="0" />
+          <Property Name="Polio" Type="Boolean" Nullable="false" />
+          <Property Name="Inject" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ChildInfo" Relationship="VaccineSystemModel.FK_Schedual_ChildInfo" FromRole="Schedual" ToRole="ChildInfo" />
+          <NavigationProperty Name="Vaccinator" Relationship="VaccineSystemModel.FK_Schedual_Vaccinator" FromRole="Schedual" ToRole="Vaccinator" />
+        </EntityType>
+        <Association Name="FK_Schedual_ChildInfo">
+          <End Type="VaccineSystemModel.ChildInfo" Role="ChildInfo" Multiplicity="1" />
+          <End Type="VaccineSystemModel.Schedual" Role="Schedual" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChildInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Schedual">
+              <PropertyRef Name="Child_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedual_Vaccinator">
+          <End Type="VaccineSystemModel.Vaccinator" Role="Vaccinator" Multiplicity="1" />
+          <End Type="VaccineSystemModel.Schedual" Role="Schedual" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vaccinator">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Schedual">
+              <PropertyRef Name="Vac_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblPolio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChildId" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="VacName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="VaccinatorTask">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Time" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Vac_Id" Type="Int32" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VaccineSystemModelStoreContainer" CdmEntityContainer="VaccineSystemEntities">
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="VaccineSystemModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChildInfoes">
+            <EntityTypeMapping TypeName="VaccineSystemModel.ChildInfo">
+              <MappingFragment StoreEntitySet="ChildInfo">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Gen_ID" ColumnName="Gen_ID" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Father_Name" ColumnName="Father_Name" />
+                <ScalarProperty Name="Father_CNIC" ColumnName="Father_CNIC" />
+                <ScalarProperty Name="UCID" ColumnName="UCID" />
+                <ScalarProperty Name="MID" ColumnName="MID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genders">
+            <EntityTypeMapping TypeName="VaccineSystemModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Muhallas">
+            <EntityTypeMapping TypeName="VaccineSystemModel.Muhalla">
+              <MappingFragment StoreEntitySet="Muhalla">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UcId" ColumnName="UcId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parents">
+            <EntityTypeMapping TypeName="VaccineSystemModel.Parent">
+              <MappingFragment StoreEntitySet="Parent">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CNIC" ColumnName="CNIC" />
+                <ScalarProperty Name="UCID" ColumnName="UCID" />
+                <ScalarProperty Name="MID" ColumnName="MID" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="VaccineSystemModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnionCouncils">
+            <EntityTypeMapping TypeName="VaccineSystemModel.UnionCouncil">
+              <MappingFragment StoreEntitySet="UnionCouncil">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UCName" ColumnName="UCName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vaccinators">
+            <EntityTypeMapping TypeName="VaccineSystemModel.Vaccinator">
+              <MappingFragment StoreEntitySet="Vaccinator">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CNIC" ColumnName="CNIC" />
+                <ScalarProperty Name="Gen_Id" ColumnName="Gen_Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="UCID" ColumnName="UCID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Complaints">
+            <EntityTypeMapping TypeName="VaccineSystemModel.Complaint">
+              <MappingFragment StoreEntitySet="Complaints">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Parent_Id" ColumnName="Parent_Id" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Scheduals">
+            <EntityTypeMapping TypeName="VaccineSystemModel.Schedual">
+              <MappingFragment StoreEntitySet="Schedual">
+                <ScalarProperty Name="Inject" ColumnName="Inject" />
+                <ScalarProperty Name="Polio" ColumnName="Polio" />
+                <ScalarProperty Name="Next_Date" ColumnName="Next_Date" />
+                <ScalarProperty Name="Vaccination_Date" ColumnName="Vaccination_Date" />
+                <ScalarProperty Name="Vac_Id" ColumnName="Vac_Id" />
+                <ScalarProperty Name="Child_Id" ColumnName="Child_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPolios">
+            <EntityTypeMapping TypeName="VaccineSystemModel.tblPolio">
+              <MappingFragment StoreEntitySet="tblPolio">
+                <ScalarProperty Name="VacName" ColumnName="VacName" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ChildId" ColumnName="ChildId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VaccinatorTasks">
+            <EntityTypeMapping TypeName="VaccineSystemModel.VaccinatorTask">
+              <MappingFragment StoreEntitySet="VaccinatorTask">
+                <ScalarProperty Name="Vac_Id" ColumnName="Vac_Id" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
